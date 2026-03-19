@@ -1,0 +1,21 @@
+<Project Sdk="Aspire.AppHost.Sdk/13.1.0">
+
+  <PropertyGroup>
+    <OutputType>Exe</OutputType>
+    <TargetFramework>net8.0</TargetFramework>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+    <UserSecretsId>4d29b81c-d306-4bbe-9b5e-f203441bda82</UserSecretsId>
+  </PropertyGroup>
+
+  <ItemGroup>
+	  <PackageReference Include="Aspire.Hosting.Apphost" Version="9.5.0" />
+	  <PackageReference Include="Aspire.Hosting.Redis" Version="9.5.0" />
+  </ItemGroup>
+	
+  <ItemGroup>
+	<ProjectReference Include="..\Client.Wasm\Client.Wasm.csproj" />
+    <ProjectReference Include="..\Service.Api\Service.Api.csproj" />
+  </ItemGroup>
+
+</Project>

@@ -1,5 +1,5 @@
-using Service.Api.Generator;
 using Service.Api.Caching;
+using Service.Api.Generator;
 
 var builder = WebApplication.CreateBuilder(args);
 

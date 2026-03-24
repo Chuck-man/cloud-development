@@ -1,5 +1,5 @@
-﻿using Service.Api.Entities;
-using Service.Api.Caching;
+﻿using Service.Api.Caching;
+using Service.Api.Entities;
 
 namespace Service.Api.Generator;
 
@@ -10,11 +10,7 @@ namespace Service.Api.Generator;
 /// <param name="logger">Логгер</param>
 public class EmployeeService(ICacheService cache, ILogger<EmployeeService> logger) : IEmployeeService
 {
-    /// <summary>
-    /// Обрабатывает запрос на получение данных о сотруднике компании
-    /// </summary>
-    /// <param name="id">Идентификатор</param>
-    /// <returns>Сотрудника компании</returns>
+    /// <inheritdoc/>
     public async Task<Employee> ProcessEmployee(int id)
     {
         try
@@ -36,7 +32,7 @@ public class EmployeeService(ICacheService cache, ILogger<EmployeeService> logge
 
             return employee;
         }
-        catch(Exception ex)
+        catch (Exception ex)
         {
             logger.LogError(ex, "Unexpected error while processing employee {EmployeeId}", id);
             throw;

@@ -4,49 +4,51 @@ using System.Text.Json;
 
 namespace Service.Api.Caching;
 
-public class CacheService : ICacheService
+/// <summary>
+/// Служба для с кэшем сотрудников компании
+/// </summary>
+/// <param name="cache"></param>
+/// <param name="logger"></param>
+public class CacheService(IDistributedCache cache, ILogger<CacheService> logger) : ICacheService
 {
-    private readonly IDistributedCache _cache;
-    private readonly ILogger<CacheService> _logger;
+    /// <summary>
+    /// Время жизни кэша
+    /// </summary>
     private static readonly TimeSpan _cacheExpiration = TimeSpan.FromMinutes(5);
 
-    public CacheService(IDistributedCache cache, ILogger<CacheService> logger)
-    {
-        _cache = cache;
-        _logger = logger;
-    }
-
+    /// <inheritdoc/>
     public async Task<Employee?> RetrieveFromCache(int id)
     {
         try
         {
-            var json = await _cache.GetStringAsync(id.ToString());
+            var json = await cache.GetStringAsync(id.ToString());
             if (string.IsNullOrEmpty(json))
                 return null;
             return JsonSerializer.Deserialize<Employee>(json);
         }
         catch (Exception ex)
         {
-            _logger.LogError(ex, "Error retrieving employee {EmployeeId} from cache", id);
+            logger.LogError(ex, "Error retrieving employee {EmployeeId} from cache", id);
             return null;
         }
     }
 
+    /// <inheritdoc/>
     public async Task PopulateCache(Employee employee)
     {
         try
         {
             var json = JsonSerializer.Serialize(employee);
-            await _cache.SetStringAsync(employee.Id.ToString(), json,
+            await cache.SetStringAsync(employee.Id.ToString(), json,
                 new DistributedCacheEntryOptions
                 {
                     AbsoluteExpirationRelativeToNow = _cacheExpiration
                 });
-            _logger.LogDebug("Successfully cached employee {EmployeeId}", employee.Id);
+            logger.LogDebug("Successfully cached employee {EmployeeId}", employee.Id);
         }
         catch (Exception ex)
         {
-            _logger.LogError(ex, "Failed to cache employee {EmployeeId}", employee.Id);
+            logger.LogError(ex, "Failed to cache employee {EmployeeId}", employee.Id);
         }
     }
 }

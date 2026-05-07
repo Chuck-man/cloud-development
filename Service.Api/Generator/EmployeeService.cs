@@ -1,5 +1,6 @@
 ﻿using Service.Api.Caching;
 using Service.Api.Entities;
+using Service.Api.Messaging;
 
 namespace Service.Api.Generator;
 
@@ -8,7 +9,7 @@ namespace Service.Api.Generator;
 /// </summary>
 /// <param name="cache">Кэш</param>
 /// <param name="logger">Логгер</param>
-public class EmployeeService(ICacheService cache, ILogger<EmployeeService> logger) : IEmployeeService
+public class EmployeeService(ICacheService cache, ILogger<EmployeeService> logger, IProducerService messagingService) : IEmployeeService
 {
     /// <inheritdoc/>
     public async Task<Employee> ProcessEmployee(int id)
@@ -26,6 +27,7 @@ public class EmployeeService(ICacheService cache, ILogger<EmployeeService> logge
 
             logger.LogInformation("Cache MISS for employee {EmployeeId}. Generating new data.", id);
             employee = EmployeeGenerator.Generate(id);
+            await messagingService.SendMessage(employee);
             logger.LogInformation("Populating the cache with employee {id}", id);
 
             _ = Task.Run(() => cache.PopulateCache(employee));

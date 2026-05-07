@@ -13,6 +13,10 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CloudDevelopment.ServiceDef
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Api.GateWay", "Api.GateWay\Api.GateWay.csproj", "{C99E72F4-9BA7-7D56-C88E-FB28534EFCB6}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Event.Sink", "Event.Sink\Event.Sink.csproj", "{7FFF40C3-40F4-1344-C1E9-0979075A9AD3}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Aspire.AppHost.Tests", "Aspire.AppHost.Tests\Aspire.AppHost.Tests.csproj", "{53974365-3678-FAB6-8CF8-A97B45620415}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -39,6 +43,14 @@ Global
 		{C99E72F4-9BA7-7D56-C88E-FB28534EFCB6}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{C99E72F4-9BA7-7D56-C88E-FB28534EFCB6}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{C99E72F4-9BA7-7D56-C88E-FB28534EFCB6}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7FFF40C3-40F4-1344-C1E9-0979075A9AD3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7FFF40C3-40F4-1344-C1E9-0979075A9AD3}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7FFF40C3-40F4-1344-C1E9-0979075A9AD3}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7FFF40C3-40F4-1344-C1E9-0979075A9AD3}.Release|Any CPU.Build.0 = Release|Any CPU
+		{53974365-3678-FAB6-8CF8-A97B45620415}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{53974365-3678-FAB6-8CF8-A97B45620415}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{53974365-3678-FAB6-8CF8-A97B45620415}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{53974365-3678-FAB6-8CF8-A97B45620415}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

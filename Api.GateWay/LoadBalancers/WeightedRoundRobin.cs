@@ -41,5 +41,5 @@ public class WeightedRoundRobin(Func<Task<List<Service>>> services) : ILoadBalan
         }
     }
 
-    public void Release(ServiceHostAndPort hostAndPort) {    }
+    public void Release(ServiceHostAndPort hostAndPort) { }
 }

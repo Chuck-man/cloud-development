@@ -9,14 +9,27 @@
   </PropertyGroup>
 
   <ItemGroup>
-	  <PackageReference Include="Aspire.Hosting.Apphost" Version="9.5.0" />
-	  <PackageReference Include="Aspire.Hosting.Redis" Version="9.5.0" />
+	<PackageReference Include="Aspire.Hosting.Apphost" Version="9.5.0" />
+	<PackageReference Include="Aspire.Hosting.Redis" Version="9.5.0" />
+    <PackageReference Include="CommunityToolkit.Aspire.Hosting.Minio" Version="9.9.0" />
+    <PackageReference Include="LocalStack.Aspire.Hosting" Version="9.5.3" />
   </ItemGroup>
 	
   <ItemGroup>
 	<ProjectReference Include="..\Api.GateWay\Api.GateWay.csproj" />
 	<ProjectReference Include="..\Client.Wasm\Client.Wasm.csproj" />
+	<ProjectReference Include="..\Event.Sink\Event.Sink.csproj" />
     <ProjectReference Include="..\Service.Api\Service.Api.csproj" />
+  </ItemGroup>
+	
+  <ItemGroup>
+    <Folder Include="CloudFormation\" />
+  </ItemGroup>
+	
+  <ItemGroup>
+    <None Update="CloudFormation\employee-template.yaml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
   </ItemGroup>
 
 </Project>

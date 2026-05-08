@@ -11,7 +11,7 @@ namespace Aspire.AppHost.Tests;
 
 /// <summary>
 /// Интеграционные тесты для проверки микросервисного пайплайна:
-/// API → SQS → Event.Sink → MinIO
+/// API -> SQS -> Event.Sink -> MinIO
 /// </summary>
 /// <param name="output">Служба журналирования юнит-тестов</param>
 public class IntegrationTests(ITestOutputHelper output) : IAsyncLifetime

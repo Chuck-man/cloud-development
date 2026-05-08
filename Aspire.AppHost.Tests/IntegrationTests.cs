@@ -41,7 +41,7 @@ public class IntegrationTests(ITestOutputHelper output) : IAsyncLifetime
     }
 
     /// <summary>
-    /// Основной тест: запрос сотрудника через gateway → файл появляется в Minio,
+    /// Основной тест: запрос сотрудника через gateway -> файл появляется в Minio,
     /// данные в ответе API и в объектном хранилище совпадают.
     /// </summary>
     [Fact]
